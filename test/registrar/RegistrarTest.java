@@ -1,5 +1,6 @@
 package registrar;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -74,6 +75,16 @@ class RegistrarTest {
         assertFalse(comp127.getRoster().contains(sally));
     }
 
+    @Test
+    void clientsCannotModifyCourses() {
+       sally.getCourses().add(comp127);
+       assertThrows(UnsupportedOperationException.class, () -> {
+
+     });
+     
+    }
+
+
     // ------ Post-test invariant check ------
     //
     // This is a bit persnickety for day-to-day testing, but these kinds of checks are appropriate
@@ -108,4 +119,5 @@ class RegistrarTest {
             c + " has an enrollment limit of " + c.getEnrollmentLimit()
                 + ", but has " + c.getRoster().size() + " students");
     }
+
 }
