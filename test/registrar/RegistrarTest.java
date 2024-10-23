@@ -77,10 +77,16 @@ class RegistrarTest {
 
     @Test
     void clientsCannotModifyCourses() {
-       sally.getCourses().add(comp127);
        assertThrows(UnsupportedOperationException.class, () -> {
-
+        sally.getCourses().add(comp127);
      });
+    }
+
+    @Test
+    void clientsCannotModifyRoster() {
+       assertThrows(UnsupportedOperationException.class, () -> {
+        comp127.getRoster().add(sally);
+     }); 
      
     }
 
